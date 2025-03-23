@@ -69,14 +69,44 @@ grocery_list (Array)
 
 ## 🎨 6. User Interface Design
 
-### 🖼 Diagram:
+### 📌 6.1 User Interface Design Overview
+The Cloud-Based Recipe & Grocery Manager features an intuitive user interface designed to provide seamless navigation and accessibility. Below are the high-level UI requirements:
+- **User-Friendly Design**: Clean, minimalistic UI for easy interaction.
+- **Responsiveness**: Adaptable for desktop and mobile users.
+- **Visual Aids**: Recipe images, categorized views, and ingredient tagging.
+- **Accessibility**: Easy-to-read fonts, proper color contrast, and keyboard navigation support.
+
+### 🖼 Mockups:
 ![User Interface Diagram](path/to/your/diagram.png)
 
-1. **🔑 Login Page**: Users enter credentials to access their account.
-2. **📋 Recipe Dashboard**: Display saved recipes with images and descriptions.
-3. **📖 Recipe Detail Page**: Shows full recipe details and an option to generate a grocery list.
-4. **🛍 Grocery List Page**: Displays an auto-generated shopping list based on selected recipes.
+### 🔄 6.2 User Interface Navigation Flow
+The navigation flow between different screens is as follows:
+
+- **Login Page ➝ Recipe Dashboard** (Upon successful authentication)
+- **Recipe Dashboard ➝ Recipe Detail Page** (On recipe selection)
+- **Recipe Detail Page ➝ Grocery List Page** (When generating a shopping list)
+- **Grocery List Page ➝ Back to Recipe Dashboard** (For more selections)
+
+Here is the **Navigation Flow Diagram**:
+
+![Navigation Flow Diagram](path/to/navigation_diagram.png)
+
+### 📌 6.3 Use Cases / User Function Description
+
+#### 🔑 Login Page
+- **User Action**: Enter credentials and authenticate.
+- **System Response**: Validates input and redirects to the Recipe Dashboard.
+
+#### 📋 Recipe Dashboard
+- **User Action**: View saved recipes and search by category.
+- **System Response**: Displays the list of stored recipes with filtering options.
+
+#### 📖 Recipe Detail Page
+- **User Action**: View detailed instructions and ingredients.
+- **System Response**: Shows recipe details with an option to generate a grocery list.
+
+#### 🛍 Grocery List Page
+- **User Action**: View auto-generated shopping list.
+- **System Response**: Displays required ingredients and allows editing before shopping.
 
 ---
-
-
