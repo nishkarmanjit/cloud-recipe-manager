@@ -1,0 +1,106 @@
+/* Global Styles */
+body {
+  background-color: #f8f9fa;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Headings */
+h1,
+h2 {
+  text-align: center;
+  color: #ff6600;
+  font-weight: bold;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Form Container */
+.form-container {
+  width: 350px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px auto;
+}
+
+/* Input Fields */
+.input-field {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+/* Buttons */
+.button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Signup Button */
+.signup-button {
+  background-color: #007bff;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+/* Login Button */
+.login-button {
+  background-color: #28a745;
+}
+
+.login-button:hover {
+  background-color: #1e7e34;
+}
+
+/* Home Page Styling */
+.home-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.home-title {
+  font-size: 28px;
+  color: #ff6600;
+}
+
+.home-links a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.home-links a:hover {
+  background-color: #0056b3;
+}
