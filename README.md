@@ -84,7 +84,8 @@ The Cloud-Based Recipe & Grocery Manager features an intuitive user interface de
 - **Accessibility**: Easy-to-read fonts, proper color contrast, and keyboard navigation support.
 
 ### 🖼 Mockups:
-[📊 View System Architecture](https://raw.githubusercontent.com/nishkarmanjit/cloud-recipe-manager/main/public/system-architecture.png)
+### 📊 System Architecture Diagram
+![System Architecture](public/system-architecture.png)
 
 ### 🔄 6.2 User Interface Navigation Flow
 The navigation flow between different screens is as follows:
@@ -96,7 +97,7 @@ The navigation flow between different screens is as follows:
 
 Here is the **Navigation Flow Diagram**:
 
-![Navigation Flow Diagram](ui_navigation_flow.png)
+![UI Flow](public/ui-navigation-flow.png)
 
 ### 📌 6.3 Use Cases / User Function Description
 
