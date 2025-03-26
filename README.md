@@ -4,6 +4,13 @@
 
 The **Cloud-Based Recipe & Grocery Manager** is a web-based application that allows users to store, manage, and organize their favorite recipes while automatically generating shopping lists based on selected recipes. This application is beneficial for food enthusiasts, students, and home cooks who want to streamline their grocery shopping and meal planning.
 
+## 📜 Revision History
+
+| Date       | Comment        | Author               |
+|------------|---------------|----------------------|
+| 2025-03-24 | Initial version of README file and started implementing a small feature  | Nishkarmanjit Kaur  |
+| YYYY-MM-DD | Worked on the feature   | Nishkarmanjit Kaur  |
+
 ## 🌟 2. Overview
 
 ### ✅ Features Included:
