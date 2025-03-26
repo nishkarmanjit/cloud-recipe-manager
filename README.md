@@ -9,7 +9,7 @@ The **Cloud-Based Recipe & Grocery Manager** is a web-based application that all
 | Date       | Comment        | Author               |
 |------------|---------------|----------------------|
 | 2025-03-24 | Initial version of README file and started implementing a small feature  | Nishkarmanjit Kaur  |
-| YYYY-MM-DD | Worked on the feature   | Nishkarmanjit Kaur  |
+| 2025-03-25 | Worked on the feature   | Nishkarmanjit Kaur  |
 
 ## 🌟 2. Overview
 
