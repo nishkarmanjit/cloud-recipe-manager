@@ -1,58 +1,55 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
-    const formStyle = {
-        width: "300px",
-        margin: "50px auto",
-        padding: "20px",
-        borderRadius: "10px",
-        backgroundColor: "#fff",
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-        textAlign: "center",
-    };
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setMessage("");
 
-    const inputStyle = {
-        width: "90%",
-        padding: "10px",
-        margin: "10px 0",
-        borderRadius: "5px",
-        border: "1px solid #ddd",
-    };
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            console.log("User logged in:", userCredential.user);
+            setMessage("✅ Login successful!");
+            navigate("/dashboard");
 
-    const buttonStyle = {
-        width: "100%",
-        padding: "10px",
-        backgroundColor: "#28a745",
-        color: "white",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
+        } catch (error) {
+            console.error("Login error:", error.message);
+            setMessage("❌ Error: " + error.message);
+        }
     };
 
     return (
-        <div style={formStyle}>
+        <div className="form-container">
             <h2>🔑 Login</h2>
-            <input
-                type="email"
-                placeholder="📧 Enter your email"
-                style={inputStyle}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="🔒 Enter your password"
-                style={inputStyle}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button style={buttonStyle}>Login</button>
+            {message && <p style={{ color: message.includes("✅") ? "green" : "red" }}>{message}</p>}
+            <form onSubmit={handleLogin}>
+                <input
+                    type="email"
+                    placeholder="📧 Enter your email"
+                    className="input-field"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="🔒 Enter your password"
+                    className="input-field"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button className="button login-button" type="submit">Login</button>
+            </form>
             <p>
-                Don't have an account? <Link to="/signup">Sign up here</Link>
+                Don't have an account? <a href="/signup">Sign up here</a>
             </p>
         </div>
     );
