@@ -1,120 +1,157 @@
 # 🍽️ Cloud-Based Recipe & Grocery Manager
 
-## 📌 1. Project Description
+## 🧩 Section 1 - Project Description
 
-The **Cloud-Based Recipe & Grocery Manager** is a web-based application that allows users to store, manage, and organize their favorite recipes while automatically generating shopping lists based on selected recipes. This application is beneficial for food enthusiasts, students, and home cooks who want to streamline their grocery shopping and meal planning.
+### 1.1 Project
+**Cloud-Based Recipe & Grocery Manager**
 
-## 📜 Revision History
+### 1.2 Description
+A cloud-powered web application that allows users to register, log in, upload and view recipe images, generate grocery lists, and store recipe-related data securely using AWS services.
 
-| Date       | Comment        | Author               |
-|------------|---------------|----------------------|
-| 2025-03-23 | Initial version of README file  | Nishkarmanjit Kaur  |
-| 2025-03-25 | Started on the feature   | Nishkarmanjit Kaur  |
-
-## 🌟 2. Overview
-
-### ✅ Features Included:
-- 🔐 **User Authentication**: Secure login system for personalized access.
-- 📖 **Recipe Storage**: Upload, store, and categorize recipes.
-- 🥦 **Ingredient Management**: List ingredients per recipe.
-- 🛒 **Grocery List Generator**: Auto-create shopping lists based on selected recipes.
-- ☁️ **Cloud Storage**: Store text, images, and recipe videos.
-- 🔍 **Search and Filter**: Find recipes by cuisine, ingredients, or dietary preferences.
-
-### ❌ Features Excluded:
-- 🤖 AI-based recipe recommendations.
-- 📲 Social media integration.
-
-## 🏗️ 3. System Architecture
-
-The system follows a client-server architecture with cloud storage integration.
-
-```
-Frontend (React.js) --> Backend (Node.js/Python) --> Database (Firebase Firestore)
-                    --> Cloud Storage (AWS S3 for images/videos)
-```
-
-**🛠 Technologies Used:**
-- 🎨 **Frontend**: React.js / Next.js
-- 🚀 **Backend**: Python (Flask) or Node.js (Express.js)
-- 🗄 **Database**: Firebase Firestore / AWS DynamoDB
-- ☁️ **Cloud Storage**: AWS S3
-- 🛠 **Tools**: GitHub, Postman, Google Vision API (optional image-to-text conversion)
-
-## 📊 4. Data Dictionary
-
-| 🏷 Field Name   | 🛠 Data Type | 📋 Description |
-|---------------|----------|-------------|
-| 🆔 user_id       | String   | Unique ID for each user |
-| 🥘 recipe_id     | String   | Unique ID for each recipe |
-| 🍲 recipe_name   | String   | Name of the recipe |
-| 🛍 ingredients   | Array    | List of ingredients |
-| 📜 instructions  | String   | Step-by-step cooking instructions |
-| 🖼 image_url     | String   | URL of the recipe image |
-| 🛒 grocery_list  | Array    | Auto-generated shopping list |
-
-## 🗃 5. Data Design
-
-### 👤 User Table
-```
-user_id (String, Primary Key)
-email (String, Unique)
-password_hash (String)
-recipes (Array of recipe_id)
-```
-
-### 🍽 Recipe Table
-```
-recipe_id (String, Primary Key)
-user_id (String, Foreign Key)
-recipe_name (String)
-ingredients (Array)
-instructions (String)
-image_url (String)
-grocery_list (Array)
-```
-
-## 🎨 6. User Interface Design
-
-### 📌 6.1 User Interface Design Overview
-The Cloud-Based Recipe & Grocery Manager features an intuitive user interface designed to provide seamless navigation and accessibility. Below are the high-level UI requirements:
-- **User-Friendly Design**: Clean, minimalistic UI for easy interaction.
-- **Responsiveness**: Adaptable for desktop and mobile users.
-- **Visual Aids**: Recipe images, categorized views, and ingredient tagging.
-- **Accessibility**: Easy-to-read fonts, proper color contrast, and keyboard navigation support.
-
-### 🖼 Mockups:
-### 📊 System Architecture Diagram
-![System Architecture](public/system-architecture.png)
-
-### 🔄 6.2 User Interface Navigation Flow
-The navigation flow between different screens is as follows:
-
-- **Login Page ➝ Recipe Dashboard** (Upon successful authentication)
-- **Recipe Dashboard ➝ Recipe Detail Page** (On recipe selection)
-- **Recipe Detail Page ➝ Grocery List Page** (When generating a shopping list)
-- **Grocery List Page ➝ Back to Recipe Dashboard** (For more selections)
-
-Here is the **Navigation Flow Diagram**:
-
-![UI Flow](public/ui-navigation-flow.png)
-
-### 📌 6.3 Use Cases / User Function Description
-
-#### 🔑 Login Page
-- **User Action**: Enter credentials and authenticate.
-- **System Response**: Validates input and redirects to the Recipe Dashboard.
-
-#### 📋 Recipe Dashboard
-- **User Action**: View saved recipes and search by category.
-- **System Response**: Displays the list of stored recipes with filtering options.
-
-#### 📖 Recipe Detail Page
-- **User Action**: View detailed instructions and ingredients.
-- **System Response**: Shows recipe details with an option to generate a grocery list.
-
-#### 🛍 Grocery List Page
-- **User Action**: View auto-generated shopping list.
-- **System Response**: Displays required ingredients and allows editing before shopping.
+### 1.3 Revision History
+| Date       | Comment                                           | Author               |
+|------------|---------------------------------------------------|----------------------|
+| 2025-03-23 | Initial version of README file                    | Nishkarmanjit Kaur   |
+| 2025-03-25 | Started on the feature                            | Nishkarmanjit Kaur   |
+| 2025-03-30 | Initial project creation and Firebase login added | Nishkarmanjit Kaur   |
+| 2025-03-31 | AWS S3 image upload + Grocery list via DynamoDB   | Nishkarmanjit Kaur   |
+| 2025-03-31 | AWS S3 image upload + Grocery list via DynamoDB   | Nishkarmanjit Kaur   |
 
 ---
+
+## 🧾 Section 2 - Overview
+
+### 2.1 Purpose
+This module focuses on implementing user login, image upload to AWS S3, and grocery list generation using DynamoDB. It is intended for developers and evaluators reviewing the cloud functionality.
+
+### 2.2 Scope
+This module covers:
+- User Authentication
+- Recipe image upload to S3
+- Grocery list generation via DynamoDB
+- UI navigation & display
+
+### 2.3 Requirements
+
+#### 2.3.1 Functional Requirements
+- R1: The system shall allow users to log in using email and password.
+- R2: The system shall allow users to upload recipe images to AWS S3.
+- R3: The system shall allow users to generate grocery lists from selected recipes.
+
+#### 2.3.2 Non-Functional Requirements
+- **Performance**: Should handle image uploads within 2 seconds on average.
+- **Reliability**: 99.9% uptime via AWS services.
+
+#### 2.3.3 Technical Requirements
+- **Frontend**: React.js
+- **Cloud Storage**: AWS S3
+- **Database**: AWS DynamoDB
+- **Authentication**: Firebase Auth
+
+#### 2.3.4 Security Requirements
+- **Authentication**: Only logged-in users can upload/view content.
+- **Data Encryption**: AWS handles encryption in transit and at rest.
+
+#### 2.3.5 Estimates
+| # | Description                                         | Hrs. Est. |
+|---|-----------------------------------------------------|-----------|
+| 1 | User Login Integration with Firebase               | 2 hrs     |
+| 2 | AWS S3 Upload Component + UI                       | 3 hrs     |
+| 3 | Grocery List from DynamoDB                         | 3 hrs     |
+| 4 | UI Styling & Animations                            | 2 hrs     |
+|   | **TOTAL**                                           | **10 hrs**|
+
+#### 2.3.6 Traceability Matrix
+| SRS Requirement | SDD Module                         |
+|------------------|-------------------------------------|
+| Req 1            | Login.js (Section 6.3)             |
+| Req 2            | ImageUploader.js (Section 6.3)     |
+| Req 3            | GroceryList.js (Section 6.3)       |
+
+---
+
+## 🏗️ Section 3 - System Architecture
+
+### 3.1 Overview
+The system uses a client-side React frontend. Firebase handles user authentication, AWS S3 stores uploaded images, and AWS DynamoDB retrieves ingredients to generate grocery lists.
+
+### 3.2 Architectural Diagrams
+
+#### 🌐 System Architecture Diagram
+![System Architecture](public/system-architecture.png)
+
+#### 🔄 Sequence Diagram
+![Sequence Diagram](public/sequence-diagram.png)
+
+---
+
+## 📚 Section 4 - Data Dictionary
+
+| Table         | Field         | Notes                       | Type     |
+|---------------|---------------|-----------------------------|----------|
+| Users         | userId        | Firebase UID                | String   |
+| Recipes       | recipeName    | Key name of recipe          | String   |
+|               | ingredients   | List of grocery items       | List     |
+
+---
+
+## 🗃️ Section 5 - Data Design
+
+### 5.1 Persistent / Static Data
+
+#### 5.1.1 Dataset - DynamoDB Recipes Table
+
+**Entity: Recipe**
+- Attributes:
+  - recipeName (PK)
+  - ingredients (List of Strings)
+
+**Example:**
+```json
+{
+  "recipeName": "Pasta",
+  "ingredients": ["Penne", "Tomato Sauce", "Garlic", "Olive Oil"]
+}
+```
+
+---
+
+## 🎨 Section 6 - User Interface Design
+
+### 6.1 User Interface Design Overview
+- 🎨 Clean, responsive layout
+- ✨ Styled image uploader with animation
+- 🧾 Dropdown to generate grocery list from recipes
+- 📱 Optimized for desktop and mobile
+
+**Screenshot of Upload Page:**
+![Uploader](public/uploader-preview.png)
+
+### 6.2 User Interface Navigation Flow
+![Navigation Flow](public/ui-navigation-flow.png)
+
+**Flow:**
+- `/` → Welcome Page
+- `/signup` → Register Page
+- `/login` → Login Page
+- `/dashboard` → User Home
+- `/upload` → Upload Image
+- `/grocery` → Generate Grocery List
+
+### 6.3 Use Cases / User Function Description
+
+#### 🔐 Login Page
+- Enter credentials → Authenticates via Firebase
+- Redirects to `/dashboard`
+
+#### 📤 Image Uploader
+- Upload file → Stores image to AWS S3
+- Shows preview with file name, size, and animation
+
+#### 🧾 Grocery List
+- Select recipe → Fetch ingredients from DynamoDB
+- Display as a bullet list
+
+---
+
+Let me know if you’d like to include the actual screenshots or links to Loom/demo video! 🎬
