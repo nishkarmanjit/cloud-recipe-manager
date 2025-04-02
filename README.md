@@ -82,10 +82,10 @@ The system uses a client-side React frontend. Firebase handles user authenticati
 ### 3.2 Architectural Diagrams
 
 #### 🌐 System Architecture Diagram
-![System Architecture](./public/system-architecture.png)
+![System Architecture](assets/system-architecture.png)
 
 #### 🔄 Sequence Diagram
-![Sequence Diagram](./public/sequence-diagram.png)
+![Sequence Diagram](assets/sequence-diagram.png)
 
 ---
 
@@ -131,7 +131,7 @@ The system uses a client-side React frontend. Firebase handles user authenticati
 
 
 ### 6.2 User Interface Navigation Flow
-![Navigation Flow](./public/ui-navigation-flow.png)
+![Navigation Flow](assets/ui-navigation-flow.png)
 
 **Flow:**
 - `/` → Welcome Page
