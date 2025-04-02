@@ -1,42 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../index.css";
 
-const Dashboard = () => {
+function Dashboard() {
     return (
-        <div style={{
-            textAlign: "center",
-            padding: "60px",
-            fontFamily: "Arial",
-            background: "#fffdf7",
-            minHeight: "100vh"
+        <div className="shared-page-container" style={{
+            background: `url("/dashboard.jpg") center center / cover no-repeat`,
+            minHeight: '100vh',
         }}>
-            <h1 style={{
-                color: "#d62828",
-                fontSize: "2.5rem",
-                marginBottom: "20px"
-            }}>
-                🛒 Hello, Foodie! Welcome to Your Dashboard
-            </h1>
-            <p>🎉 You are now logged in!</p>
+            <h1 className="home-title">👋 Welcome Back!</h1>
+            <p className="home-subtext">Explore your recipes, grocery list, and more 🍅🧄🛒</p>
 
-            <div style={{ marginTop: "30px" }}>
-                <Link to="/upload" style={btn("orange")}>📤 Upload Recipe Image</Link>
-                <Link to="/grocery" style={btn("green")}>🧾 Generate Grocery List</Link>
+            <div className="home-links">
+                <Link to="/upload">📤 Upload Recipe</Link>
+                <Link to="/grocery" className="login-btn-home">🧾 Grocery List</Link>
+                <Link to="/search" style={{ backgroundColor: "#ffc107" }}>
+                    🔍 Search Recipes
+                </Link>
+
             </div>
         </div>
     );
-};
-
-const btn = (color) => ({
-    display: "inline-block",
-    margin: "10px",
-    padding: "12px 24px",
-    borderRadius: "8px",
-    backgroundColor: color === "green" ? "#28a745" : "#f77f00",
-    color: "white",
-    fontSize: "1rem",
-    textDecoration: "none",
-    fontWeight: "bold",
-});
+}
 
 export default Dashboard;

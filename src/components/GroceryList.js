@@ -21,6 +21,15 @@ const GroceryList = () => {
                 <option value="Pasta">🍝 Pasta</option>
                 <option value="Pizza">🍕 Pizza</option>
                 <option value="Salad">🥗 Salad</option>
+                <option value="Butter Chicken">🍗 Butter Chicken</option>
+                <option value="Veg Biryani">🍚 Veg Biryani</option>
+                <option value="Tacos">🌮 Tacos</option>
+                <option value="New York Cheesecake">🍰 New York Cheesecake</option>
+                <option value="Strawberry Milkshake">🍓 Strawberry Milkshake</option>
+                <option value="Apple Pie">🥧 Apple Pie</option>
+                <option value="Nachos with Salsa">🌶️ Nachos with Salsa</option>
+                <option value="Veg Sandwich">🥪 Veg Sandwich</option>
+                <option value="Samosa">🥟 Samosa</option>
             </select>
 
             <button onClick={handleGenerate} style={styles.button}>Generate List</button>

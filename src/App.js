@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import ImageUploader from "./components/ImageUploader";
 import Dashboard from "./components/Dashboard";
 import GroceryList from "./components/GroceryList";
-
+import SearchRecipes from "./components/SearchRecipes";
 function App() {
   return (
     <Router>
@@ -17,6 +17,8 @@ function App() {
         <Route path="/upload" element={<ImageUploader />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/grocery" element={<GroceryList />} />
+        <Route path="/search" element={<SearchRecipes />} />
+
       </Routes>
     </Router>
   );
