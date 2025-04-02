@@ -9,13 +9,15 @@
 A cloud-powered web application that allows users to register, log in, upload and view recipe images, generate grocery lists, and store recipe-related data securely using AWS services.
 
 ### 1.3 Revision History
-| Date       | Comment                                           | Author               |
-|------------|---------------------------------------------------|----------------------|
-| 2025-03-23 | Initial version of README file                    | Nishkarmanjit Kaur   |
-| 2025-03-25 | Started on the feature                            | Nishkarmanjit Kaur   |
-| 2025-03-30 | Initial project creation and Firebase login added | Nishkarmanjit Kaur   |
-| 2025-03-31 | AWS S3 image upload + Grocery list via DynamoDB   | Nishkarmanjit Kaur   |
-| 2025-03-31 | AWS S3 image upload + Grocery list via DynamoDB   | Nishkarmanjit Kaur   |
+| Date       | Comment                                                        | Author               |
+|------------|----------------------------------------------------------------|----------------------|
+| 2025-03-23 | Initial version of README file                                 | Nishkarmanjit Kaur   |
+| 2025-03-25 | Started on the feature                                          | Nishkarmanjit Kaur   |
+| 2025-03-30 | Initial project creation and Firebase login added              | Nishkarmanjit Kaur   |
+| 2025-03-31 | AWS S3 image upload + Grocery list via DynamoDB               | Nishkarmanjit Kaur   |
+| 2025-04-01 | Implemented Search Recipes feature using DynamoDB              | Nishkarmanjit Kaur   |
+| 2025-04-02 | Enhanced UI with background images and styled result displays  | Nishkarmanjit Kaur   |
+| 2025-04-02 | Added diagrams and polished README with architectural mapping  | Nishkarmanjit Kaur   |
 
 ---
 
@@ -58,8 +60,9 @@ This module covers:
 | 1 | User Login Integration with Firebase               | 2 hrs     |
 | 2 | AWS S3 Upload Component + UI                       | 3 hrs     |
 | 3 | Grocery List from DynamoDB                         | 3 hrs     |
-| 4 | UI Styling & Animations                            | 2 hrs     |
-|   | **TOTAL**                                           | **10 hrs**|
+| 4 | Recipe Search with Partial Match                   | 2 hrs     |
+| 5 | UI Styling & Animations                            | 2 hrs     |
+|   | **TOTAL**                                           | **12 hrs**|
 
 #### 2.3.6 Traceability Matrix
 | SRS Requirement | SDD Module                         |
@@ -67,6 +70,7 @@ This module covers:
 | Req 1            | Login.js (Section 6.3)             |
 | Req 2            | ImageUploader.js (Section 6.3)     |
 | Req 3            | GroceryList.js (Section 6.3)       |
+| Req 4            | SearchRecipes.js (Section 6.3)     |
 
 ---
 
@@ -78,10 +82,10 @@ The system uses a client-side React frontend. Firebase handles user authenticati
 ### 3.2 Architectural Diagrams
 
 #### 🌐 System Architecture Diagram
-![System Architecture](public/system-architecture.png)
+![System Architecture](./public/system-architecture.png)
 
 #### 🔄 Sequence Diagram
-![Sequence Diagram](public/sequence-diagram.png)
+![Sequence Diagram](./public/sequence-diagram.png)
 
 ---
 
@@ -122,13 +126,12 @@ The system uses a client-side React frontend. Firebase handles user authenticati
 - 🎨 Clean, responsive layout
 - ✨ Styled image uploader with animation
 - 🧾 Dropdown to generate grocery list from recipes
+- 🔍 Partial match recipe search
 - 📱 Optimized for desktop and mobile
 
-**Screenshot of Upload Page:**
-![Uploader](public/uploader-preview.png)
 
 ### 6.2 User Interface Navigation Flow
-![Navigation Flow](public/ui-navigation-flow.png)
+![Navigation Flow](./public/ui-navigation-flow.png)
 
 **Flow:**
 - `/` → Welcome Page
@@ -137,6 +140,7 @@ The system uses a client-side React frontend. Firebase handles user authenticati
 - `/dashboard` → User Home
 - `/upload` → Upload Image
 - `/grocery` → Generate Grocery List
+- `/search` → Search Recipes
 
 ### 6.3 Use Cases / User Function Description
 
@@ -152,6 +156,10 @@ The system uses a client-side React frontend. Firebase handles user authenticati
 - Select recipe → Fetch ingredients from DynamoDB
 - Display as a bullet list
 
+#### 🔍 Search Recipes
+- Type partial recipe name → Search DynamoDB
+- Display results with clean card layout
+
 ---
 
-Let me know if you’d like to include the actual screenshots or links to Loom/demo video! 🎬
+
