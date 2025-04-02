@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GetItemCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { ScanCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 
 const dbClient = new DynamoDBClient({
@@ -14,43 +14,54 @@ const tableName = "Recipes";
 
 function SearchRecipes() {
     const [searchTerm, setSearchTerm] = useState("");
-    const [recipe, setRecipe] = useState(null);
+    const [results, setResults] = useState([]);
     const [error, setError] = useState("");
 
     const handleSearch = async () => {
         setError("");
-        setRecipe(null);
+        setResults([]);
 
         if (!searchTerm) return;
 
         try {
-            const command = new GetItemCommand({
+            const command = new ScanCommand({
                 TableName: tableName,
-                Key: {
-                    recipeName: { S: searchTerm },
+                FilterExpression: "contains(recipeName, :name)",
+                ExpressionAttributeValues: {
+                    ":name": { S: searchTerm },
                 },
             });
 
             const response = await dbClient.send(command);
 
-            if (response.Item) {
-                const item = unmarshall(response.Item);
-                setRecipe(item);
+            if (response.Items.length > 0) {
+                const recipes = response.Items.map((item) => unmarshall(item));
+                setResults(recipes);
             } else {
-                setError("Recipe not found!");
+                setError("No matching recipes found.");
             }
         } catch (err) {
             console.error("Search error:", err);
-            setError("Failed to search recipe.");
+            setError("Something went wrong while searching.");
         }
     };
 
     return (
-        <div style={{ padding: "40px", textAlign: "center" }}>
+        <div style={{
+            padding: "40px",
+            textAlign: "center",
+            minHeight: "100vh",
+            backgroundImage: "url('/search-bg.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "rgba(255, 255, 255, 0.7)",
+            backgroundBlendMode: "lighten",
+        }}>
             <h2>🔍 Search Recipes</h2>
             <input
                 type="text"
-                placeholder="Enter recipe name (e.g., Pasta)"
+                placeholder="Type part of a recipe name..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{ padding: "10px", width: "300px", marginRight: "10px" }}
@@ -61,15 +72,34 @@ function SearchRecipes() {
 
             {error && <p style={{ color: "red", marginTop: "20px" }}>{error}</p>}
 
-            {recipe && (
+            {results.length > 0 && (
                 <div style={{ marginTop: "30px" }}>
-                    <h3>{recipe.recipeName}</h3>
-                    <h4>🧾 Ingredients:</h4>
-                    <ul>
-                        {recipe.ingredients.map((ing, index) => (
-                            <li key={index}>{ing}</li>
-                        ))}
-                    </ul>
+                    {results.map((recipe, idx) => (
+                        <div
+                            key={idx}
+                            style={{
+                                border: "2px solid #ffa94d",
+                                borderRadius: "10px",
+                                backgroundColor: "#f1f8e9",
+                                padding: "15px",
+                                marginBottom: "20px",
+                                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                                maxWidth: "600px",
+                                margin: "20px auto",
+                                transition: "0.3s",
+                                cursor: "pointer",
+
+                            }}
+                        >
+                            <h3 style={{ color: "#ff6600" }}>{recipe.recipeName}</h3>
+                            <h4>🧾 Ingredients You'll Need:</h4>
+                            <ul style={{ textAlign: "left" }}>
+                                {recipe.ingredients.map((ing, i) => (
+                                    <li key={i}>{ing}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>

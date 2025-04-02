@@ -14,7 +14,7 @@ const GroceryList = () => {
 
     return (
         <div style={styles.container}>
-            <h2>🧾 Grocery List Generator (DynamoDB)</h2>
+            <h2>🧾 Grocery List Generator </h2>
 
             <select onChange={(e) => setSelected(e.target.value)} style={styles.select}>
                 <option value="">Select a Recipe</option>
@@ -35,9 +35,9 @@ const GroceryList = () => {
             <button onClick={handleGenerate} style={styles.button}>Generate List</button>
 
             {list.length > 0 && (
-                <div>
-                    <h3>🛒 Ingredients:</h3>
-                    <ul>
+                <div style={styles.resultBox}>
+                    <h3>🛒 Ingredients You'll Need:</h3>
+                    <ul style={styles.list}>
                         {list.map((item, index) => (
                             <li key={index}>✅ {item}</li>
                         ))}
@@ -53,13 +53,20 @@ const styles = {
         textAlign: "center",
         fontFamily: "Arial",
         padding: "50px",
-        backgroundColor: "#fdf6e3",
         minHeight: "100vh",
+        backgroundImage: "url('/grocery-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundColor: "rgba(255, 255, 255, 0.5)",
+        backgroundBlendMode: "lighten",
     },
     select: {
         padding: "10px",
         fontSize: "1rem",
         marginRight: "10px",
+        marginBottom: "20px",
+        marginTop: "20px",
     },
     button: {
         padding: "10px 20px",
@@ -69,7 +76,24 @@ const styles = {
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",
+        marginBottom: "30px",
+    },
+    resultBox: {
+        backgroundColor: "rgba(255, 255, 255, 0.9)",
+        padding: "20px 30px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        display: "inline-block",
+        marginTop: "30px",
+    },
+    list: {
+        listStyleType: "disc",
+        paddingLeft: "20px",
+        textAlign: "left",
+        marginTop: "15px",
+        fontSize: "1.1rem",
     }
+
 };
 
 export default GroceryList;
